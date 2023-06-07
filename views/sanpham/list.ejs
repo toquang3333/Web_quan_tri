@@ -1,0 +1,166 @@
+<%-include('../inc/top')%>
+
+  <h2 class="text-success">Bảng Sản Phẩm</h2>
+
+
+
+ 
+  <nav class="navbar bg-light">
+    
+    <div class="container-fluid p-3">
+      <a href=""></a>
+     
+      <form class="d-flex" role="search" method="post">
+
+       <!-- <div class="me-2">
+         
+          <h8 href="">Sắp xếp: </h8>
+          <select name="sapxep">
+            <option value="">Tăng dần</option>
+            <option value="">Giảm dần</option>
+          </select>
+        </div> -->
+        <ul class="list-group">
+            <select name="timkiem" class="form-control" id="validationDefault04">
+              <option selected disabled value="">Chọn sản phẩm</option>
+              <%ListTL.forEach((row)=>{  %>
+                  <option value="<%=row._id%>"><%=row.name%></option>
+             <% }) %>
+            </select>
+        </ul>
+        <!-- <input name="timkiem" class="form-control" type="search" placeholder="Search" aria-label="Search"> -->
+        <button class="btn btn-outline-success ms-2" type="submit">Search</button>
+        <a class="btn btn-success ms-2" href="/sp/add" role="button">Add</a>
+        
+      </form>
+     
+    </div>
+
+   
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Tên SP</th>
+          <th scope="col">Loại SP</th>
+          <th scope="col">Ảnh</th>
+          <th scope="col">Nội dung</th>
+          <th scope="col">Giá tiền</th>
+          
+          <th scope="col">Update/Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% sp.forEach( (row)=>{ %>
+          <tr>
+            <td>
+              <%=row._id%>
+            </td>
+            <td>
+              <a href="sp/listDS/<%=row._id%>"><%=row.name%></a>
+            </td>
+            <td>
+              <%=row.loai.name%>
+            </td>
+            <td>
+              <img src="<%=row.anh%>" style="width: 80px; height:60px" class="rounded"> 
+            </td>
+            <td>
+              <%=row.noidung%>
+            </td>
+            <td>
+              <%=row.price%>
+            </td>
+            
+            <td>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="sp/edit/<%=row._id%>"><i class="fa-solid fa-pen-to-square"></i></a></li>
+                  <li class="breadcrumb-item"><a href="sp/delete/<%=row._id%>"><i class="fa-solid fa-trash"></i></a></li>
+                </ol>
+              </nav>
+            </td>
+          </tr>
+        
+
+          <% } ) %>
+
+      </tbody>
+    </table>
+
+    <div class="row col-12">
+      <p class="col-5">50/1000</p>
+      <div class="btn-toolbar col-7" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group me-2" role="group" aria-label="First group">
+          <button type="button" class="btn btn-primary">
+            <<
+              <button type="button" class="btn btn-primary">1</button>
+              <button type="button" class="btn btn-primary">2</button>
+              <button type="button" class="btn btn-primary">3</button>
+              <button type="button" class="btn btn-primary">>></button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- <div class="float-start img-thumbnail">
+      <img src="https://laptop88.vn/media/news/2910_hinhanhmaytinhxachtay4.jpg" class=" float-start img-thumbnail" style="width: 460px; height: 350px" alt="...">
+      <h3 class="text-center">Laptop Dell</h3>
+      <h6 class="text-center">Loại SP: Máy tính</h6>
+      <h6 class="text-center">Nội dung SP: Loại pin tốt</h6>
+      <h6 class="text-center">Giá tiền: 34.000 đ</h6>
+      <a href="#">Xem chi tiết SP</a>
+      <div class="row">
+        <a class="btn btn-success ms-2" href="#" role="button">Sửa</a>
+        <a class="btn btn-success ms-2" href="#" role="button">Xóa</a>
+      </div>
+     
+   </div>
+   <div class="float-start img-thumbnail">
+     <img src="https://cdn.tgdd.vn/Files/2019/08/22/1190454/laptop-vien-man-hinh-mong-co-nhung-uu-va-nhuoc-diem-gi--4.jpg" class=" float-end img-thumbnail" style="width: 460px; height: 350px" alt="...">
+     <h3 class="text-center">Labtop HP</h3>
+      <h6 class="text-center">Loại SP: Máy tính</h6>
+      <h6 class="text-center">Nội dung SP: Màn to pin khỏe</h6>
+      <h6 class="text-center">Giá tiền: 15.000 đ</h6>
+      <a href="#">Xem chi tiết SP</a>
+      <div class="row">
+        <a class="btn btn-success ms-2" href="#" role="button">Sửa</a>
+        <a class="btn btn-success ms-2" href="#" role="button">Xóa</a>
+      </div>
+   </div>
+  
+   <div class="float-start img-thumbnail">
+     <img src="https://cdn.tgdd.vn/Files/2020/12/26/1316150/thumb_800x501.jpg" class=" float-start img-thumbnail" style="width: 460px; height: 350px" alt="...">
+     <h3 class="text-center">Laptop Accer</h3>
+     <h6 class="text-center">Loại SP: Máy tính</h6>
+     <h6 class="text-center">Nội dung SP: Loại pin tốt</h6>
+     <h6 class="text-center">Giá tiền: 20.000 đ</h6>
+     <a href="#">Xem chi tiết SP</a>
+     <div class="row">
+      <a class="btn btn-success ms-2" href="#" role="button">Sửa</a>
+      <a class="btn btn-success ms-2" href="#" role="button">Xóa</a>
+    </div>
+  </div>
+
+  <div class="float-start img-thumbnail">
+   <img src="https://cdn.tgdd.vn/Files/2022/07/24/1450033/laptop-man-hinh-full-hd-la-gi-kinh-nghiem-chon-mu-2.jpg" class=" float-end img-thumbnail" style="width: 460px; height: 350px" alt="...">
+   <h3 class="text-center">Laptop Dell</h3>
+    <h6 class="text-center">Loại SP: Máy tính</h6>
+    <h6 class="text-center">Nội dung SP: Màn to pin khỏe</h6>
+    <h6 class="text-center">Giá tiền: 15.000 đ</h6>
+    <a href="#">Xem chi tiết SP</a>
+    <div class="row">
+      <a class="btn btn-success ms-2" href="#" role="button">Sửa</a>
+      <a class="btn btn-success ms-2" href="#" role="button">Xóa</a>
+    </div>
+ </div> -->
+
+    </div>
+
+    <script src="bootstrap-5.2.3-dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"></script>
+    </body>
+
+    </html>

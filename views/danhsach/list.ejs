@@ -1,0 +1,147 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css">
+</head>
+
+<body> 
+  <div class="container">
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/home">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Users
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/admin">Admin</a></li>
+                      <li><a class="dropdown-item" href="/ds">User</a></li>
+                     
+                    </ul>
+                  </li>
+
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Sản Phẩm
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/sp">Máy tính</a></li>
+                  <li><a class="dropdown-item" href="/spT">Điện thoại</a></li>
+                 
+                 
+                </ul>
+              </li>
+
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Settings
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Banner</a></li>
+                  <li><a class="dropdown-item" href="#">Info</a></li>
+                 
+                 
+                </ul>
+              </li>
+             
+            </ul>
+            
+          </div>
+        </div>
+        <div class="float-end">
+            <a class="d-inline" href="#">Tiếng Anh :</a>
+            <a class="d-inline" href="#">Tiếng Việt</a>
+
+        </div>
+      </nav> -->
+  <%-include('../inc/top')%>
+  <h2 class="text-success">Bảng Users</h2>
+
+
+  <nav class="navbar bg-light">
+   
+    <div class="container-fluid p-3">
+      <a href=""></a>
+      <form class="d-flex" role="search" method="post">
+        
+          <input class="form-control" name="timkiemUser" type="search" placeholder="Search" aria-label="Search">
+      
+        <!-- <input class="form-control" name="timkiemUser" type="search" placeholder="Search" aria-label="Search"> -->
+        <button class="btn btn-outline-success ms-2" name="" type="submit">Search</button>
+        <a class="btn btn-success ms-2" href="/ds/add">Add</a>
+      </form>
+      
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Fullname</th>
+          <th scope="col">Email</th>
+          <th scope="col">Role</th>
+          <!-- <th scope="col">Group</th>
+          <th scope="col">Status</th> -->
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+         <% dulieu.forEach( (row)=>{ %>
+          <tr>
+              <th scope="row"><%=row._id%></th>
+              <td><%=row.name%></td>
+              <td><%=row.email%></td>
+              <td><%=row.role%></td>
+              <!-- <td><%=row.Passs%></td>
+              <td><%=row.groud%></td> -->
+              <td>
+                  <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="/ds/edit/<%=row._id%>"><i class="fa-solid fa-pen-to-square"></i></a></li>
+                          <li class="breadcrumb-item"><a href="/ds/delete/<%=row._id%>"><i class="fa-solid fa-trash"></i></a></li>
+                      </ol>
+                  </nav>
+              </td>
+          </tr>
+       <% }) %>
+        
+      </tbody>
+    </table>
+
+    <div class="row col-12">
+      <p class="col-5">50/1000</p>
+      <div class="btn-toolbar col-7" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group me-2" role="group" aria-label="First group">
+          <button type="button" class="btn btn-primary"><<</button>
+          <button type="button" class="btn btn-primary">1</button>
+          <button type="button" class="btn btn-primary">2</button>
+          <button type="button" class="btn btn-primary">3</button>
+          <button type="button" class="btn btn-primary">>></button>
+        </div>
+       
+      </div>
+    </div>
+
+  </div>
+
+    <script src="bootstrap-5.2.3-dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"></script>
+</body>
+
+</html>
